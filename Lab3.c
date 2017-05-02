@@ -1,10 +1,14 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <math.h>
 
-int main () {
+int main (int argc, char *argv[]) {
 	int n, i=0,x, Elementos, j, pi, y=0, m, e, q, opc, indice=0;
-	printf("Ingrese el valor de n: ");
-	scanf("%d", &n);
+	char aux;
+	//printf("Ingrese el valor de n: ");
+	//scanf("%d", &n);
+	//aux = argv[1];
+	n=strtol(argv[1], NULL, 10);
 	m=n;
 	n=sqrt(n);
 	int p[n], primos[n];
@@ -96,4 +100,6 @@ int main () {
 	}
 	printf("\n");
 }
+
+//Número máximo que aguanta C sin GMP
 
