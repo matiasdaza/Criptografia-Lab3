@@ -2,9 +2,10 @@
 #include <math.h>
 
 int main () {
-	int n, i=0,x, Elementos, j, pi, y=0;
+	int n, i=0,x, Elementos, j, pi, y=0, m, e, q, opc, indice=0;
 	printf("Ingrese el valor de n: ");
 	scanf("%d", &n);
+	m=n;
 	n=sqrt(n);
 	int p[n], primos[n];
 	for (i=0; i<= (n-2); i++){
@@ -63,5 +64,36 @@ int main () {
 			printf("%d",primos[y]);
 	}
 	printf("} \n");
+
+	q=m;
+	//printf("hooola%d\n",q );
+	
+	for(i=0; i<Elementos; i++){
+		q=m;
+		//printf("hooola%d\n",q );
+		e=0;
+		if(q % primos[i] == 0){
+			while(q % primos[i] == 0){
+				//printf("hola1 %d\n", q );
+				//scanf("%d", opc);
+				e++;
+				q =(q / primos[i]);
+				//printf("hola2 %d\n", q );
+				//scanf("%d", opc);
+				
+			}
+		if(indice==0){
+			printf("\n n = ");
+			printf("%d^%d", primos[i], e);
+			indice++;
+		}else{
+			printf(", %d^%d ", primos[i], e);
+		}
+		}
+	}
+	if(indice==0){
+		printf("\nEl número %d es primo, por lo que no tiene divisores. \n", m );
+	}
+	printf("\n");
 }
 
