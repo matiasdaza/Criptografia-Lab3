@@ -5,9 +5,6 @@
 int main (int argc, char *argv[]) {
 	int n, i=0,x, Elementos, j, pi, y=0, m, e, q, opc, indice=0;
 	char aux;
-	//printf("Ingrese el valor de n: ");
-	//scanf("%d", &n);
-	//aux = argv[1];
 	n=strtol(argv[1], NULL, 10);
 	m=n;
 	n=sqrt(n);
@@ -25,7 +22,6 @@ int main (int argc, char *argv[]) {
 	}
 	printf("} \n");
 	Elementos = i;
-	//printf("%d\n", Elementos );
 
 	//Proceso para sacar los números no primos
 	for(i=0; i < Elementos; i++){
@@ -39,19 +35,8 @@ int main (int argc, char *argv[]) {
 					}
 				}
 			}
-			//Todo esto comentado era para ver el proceso de "sacado de números no primos"
-			/*
-			printf("\n\n");
-			for(x=0; x< Elementos; x++){
-				if(x!=Elementos-1)
-					printf("%d, ",p[x]);
-				else
-					printf("%d",p[x]);
-			}
-			printf("\n\n");
-			*/
 			primos[y]=pi; //Se almacenan los números que son primos
-			//printf("jaja %d \n\n", primos[y] );
+			
 			y++;	
 		}
 
@@ -70,28 +55,21 @@ int main (int argc, char *argv[]) {
 	printf("} \n");
 
 	q=m;
-	//printf("hooola%d\n",q );
-	
 	for(i=0; i<Elementos; i++){
 		q=m;
-		//printf("hooola%d\n",q );
 		e=0;
 		if(q % primos[i] == 0){
 			while(q % primos[i] == 0){
-				//printf("hola1 %d\n", q );
-				//scanf("%d", opc);
 				e++;
-				q =(q / primos[i]);
-				//printf("hola2 %d\n", q );
-				//scanf("%d", opc);
+				q =(q / primos[i]);-
 				
 			}
 		if(indice==0){
-			printf("\n n = ");
-			printf("%d^%d", primos[i], e);
+			printf("\n n = \n");
+			printf("(%d,%d)\n", primos[i], e);
 			indice++;
 		}else{
-			printf(", %d^%d ", primos[i], e);
+			printf("(%d,%d)\n ", primos[i], e);
 		}
 		}
 	}
@@ -100,6 +78,4 @@ int main (int argc, char *argv[]) {
 	}
 	printf("\n");
 }
-
-//Número máximo que aguanta C sin GMP
 
