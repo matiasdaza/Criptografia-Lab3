@@ -1,8 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <math.h>
+#include <time.h>
 
 int main (int argc, char *argv[]) {
+	FILE *file;
+	clock_t inicio, fin; // Se crea variable 'clock_t' para calcular el tiempo de ejecúción del programa.
+	inicio=clock();
+	float tiempo = 0;
 	int n, i=0,x, Elementos, j, pi, y=0, m, e, q, opc, indice=0;
 	char aux;
 	n=strtol(argv[1], NULL, 10);
@@ -36,7 +41,6 @@ int main (int argc, char *argv[]) {
 				}
 			}
 			primos[y]=pi; //Se almacenan los números que son primos
-			
 			y++;	
 		}
 
@@ -55,13 +59,14 @@ int main (int argc, char *argv[]) {
 	printf("} \n");
 
 	q=m;
+	
 	for(i=0; i<Elementos; i++){
 		q=m;
 		e=0;
 		if(q % primos[i] == 0){
 			while(q % primos[i] == 0){
 				e++;
-				q =(q / primos[i]);-
+				q =(q / primos[i]);
 				
 			}
 		if(indice==0){
@@ -69,7 +74,7 @@ int main (int argc, char *argv[]) {
 			printf("(%d,%d)\n", primos[i], e);
 			indice++;
 		}else{
-			printf("(%d,%d)\n ", primos[i], e);
+			printf("(%d,%d)\n", primos[i], e);
 		}
 		}
 	}
@@ -77,5 +82,19 @@ int main (int argc, char *argv[]) {
 		printf("\nEl número %d es primo, por lo que no tiene divisores. \n", m );
 	}
 	printf("\n");
+	fin=clock();
+	tiempo = (fin-inicio)/(double)CLOCKS_PER_SEC;
+	printf("El tiempo de ejecución fue de: %f \n",tiempo); // %f es porque es un flotante!!!
+	file = fopen("Experimentos 3.txt", "a");
+    if(file == NULL)
+    {
+        printf("Error al abrir archivo");
+    }
+    fprintf(file, "%d", m);
+    fprintf(file,"\t");
+    fprintf(file,"%F \n",tiempo);
+	fclose(file);
 }
+
+
 
